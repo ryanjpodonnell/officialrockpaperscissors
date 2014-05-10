@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="stylesheets/style.css">
+</head>
+  
+<body>
+  <h1>Rock Paper Scissors</h1>
+
+	<button class="connect btn btn-success">Find player</button> 
+	<div id="messages"></div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script>
+	$('.connect').on('click', function() {
+		var socket = io.connect();
+		var id;
+
+		$('#messages').html("Waiting for other player to connect...");
+
+    // socket.on('receive', function(data) {
+    //   id = data.id;
+    // });
+
+		socket.on('startGame', function(data) {
+      $('#messages').html(data.message);
+		})
+	});
+	</script>
+</body>
+</html>
