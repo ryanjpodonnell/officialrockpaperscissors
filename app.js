@@ -9,36 +9,24 @@ server.listen(process.env.PORT || 3000, function() {
 
 app.use(express.static('public'));
 
-var players = [];
 
+var players = [];
 io.sockets.on('connection', function(socket) {
 	var player = socket.id;
 	players.push(player);
 	var id = players.indexOf(player)
   
-  
   socket.on('disconnect', function() {
-    var i = players.indexOf(player);
-    players.splice(i, 1);
+    players.splice(id, 1);
   });
   
-
-  // socket.emit('receive', { id: id, misc: players });
-
-  // socket.on('alertMark', function(data) {
-  //   socket.broadcast.emit('mark', data);
-  // });
-
+  socket.emit('receive', { id: id });
+  
 	if (players.length === 2) { 
-		io.sockets.emit('startGame', { message: 'Have fun!' });
+		io.sockets.emit('startGame', { message: 'Have fun!', players: players });
 	}
 
-  // socket.on('alertNewGame', function(data) {
-  //     socket.broadcast.emit('newGame', data);
-  //   });
-
-  // socket.on('disconnect', function() {
-  //   players.length = 0;
-  // })
-
+  socket.on('temp', function() {
+    io.sockets.emit('temp');
+  });
 });
