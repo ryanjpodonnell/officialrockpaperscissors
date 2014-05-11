@@ -21,17 +21,17 @@
         if (data.choice === "Rock") {
           $("#" + color + "-paper").css("display", "none");
           $("#" + color + "-scissors").css("display", "none");
-          $("#" + color + "-rock").css("display", "block");
+          $("#" + color + "-rock").css("display", "inline");
         }
         else if (data.choice === "Paper") {
           $("#" + color + "-rock").css("display", "none");
           $("#" + color + "-scissors").css("display", "none");
-          $("#" + color + "-paper").css("display", "block");
+          $("#" + color + "-paper").css("display", "inline");
         }
         else {
           $("#" + color + "-rock").css("display", "none");
           $("#" + color + "-paper").css("display", "none");
-          $("#" + color + "-scissors").css("display", "block");
+          $("#" + color + "-scissors").css("display", "inline");
         }
       });
     }
