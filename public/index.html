@@ -12,7 +12,7 @@
   <div class="row header">
     <h1><strong>Official</strong> Rock Paper Scissors</h1>
   </div>
-  <div class="row header">
+  <div class="row header connect-row">
     <button class="connect btn btn-primary">Find Player</button> 
   </div>
   <div class="row header">
@@ -42,11 +42,13 @@
 <script src="javascripts/game.js"></script>
 <script>
 $('.connect').on('click', function() {
-	var socket = io.connect("http://localhost", {'force new connection': true});
+	var socket = io.connect(null, {'force new connection': true});
 	var id;
   var intervalId
 
-	$('#messages').html("Waiting for other player to connect...");
+  $('.connect-row').css("display", "none");
+  $('#messages').after("<div class='dummy-row'></div>");
+	$('#messages').text("Waiting for other player to connect...");
 
   socket.on('receive', function(data) {
     id = data.id;
@@ -93,6 +95,8 @@ $('.connect').on('click', function() {
   
 	socket.on('endGame', function() {
     clearInterval(intervalId);
+    $('.connect-row').css("display", "block");
+    $( ".dummy-row" ).remove();
     $('#messages').text("Opponent has disconnected...");
     socket.disconnect();
 	});
