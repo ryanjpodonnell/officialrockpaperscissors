@@ -15,14 +15,22 @@
   <button class="choice btn btn-danger">Paper</button> 
   <button class="choice btn btn-danger">Scissors</button> 
 	<div id="messages"></div>
-  <div id="red-choice"></div>
-  <div id="blue-choice"></div>
+  <div id="red-choice">
+    <img src="/images/red_rock.jpg" id="red-rock"></img>
+    <img src="/images/red_paper.jpg" id="red-paper"></img>
+    <img src="/images/red_scissors.jpg" id="red-scissors"></img>
+  </div>
+  <img src="/images/vs.jpg"></img>
+  <div id="blue-choice">
+    <img src="/images/blue_rock.jpg" id="blue-rock"></img>
+    <img src="/images/blue_paper.jpg" id="blue-paper"></img>
+    <img src="/images/blue_scissors.jpg" id="blue-scissors"></img>
+  </div>
 
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-  <script src="javascripts/preload_images.js"></script>
   <script src="javascripts/game.js"></script>
 	<script>
 	$('.connect').on('click', function() {

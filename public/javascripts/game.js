@@ -19,13 +19,19 @@
       this.socket.on('showChoice', function(data) {
         var color = (data.player === 0 ? "red" : "blue" );
         if (data.choice === "Rock") {
-          $("#" + color + "-choice").html('<img src="/images/' + color + '_rock.jpg"></img>');
+          $("#" + color + "-paper").css("display", "none");
+          $("#" + color + "-scissors").css("display", "none");
+          $("#" + color + "-rock").css("display", "block");
         }
         else if (data.choice === "Paper") {
-          $("#" + color + "-choice").html('<img src="/images/' + color + '_paper.jpg"></img>');
+          $("#" + color + "-rock").css("display", "none");
+          $("#" + color + "-scissors").css("display", "none");
+          $("#" + color + "-paper").css("display", "block");
         }
         else {
-          $("#" + color + "-choice").html('<img src="/images/' + color + '_scissors.jpg"></img>');
+          $("#" + color + "-rock").css("display", "none");
+          $("#" + color + "-paper").css("display", "none");
+          $("#" + color + "-scissors").css("display", "block");
         }
       });
     }

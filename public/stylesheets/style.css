@@ -1,0 +1,23 @@
+#red-rock {
+  display: block;
+}
+
+#red-paper {
+  display: none;
+}
+
+#red-scissors {
+  display: none;
+}
+
+#blue-rock {
+  display: block;
+}
+
+#blue-paper {
+  display: none;
+}
+
+#blue-scissors {
+  display: none;
+}
