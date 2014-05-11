@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Rock Paper Scissors</title>
+  <title>OFPS</title>
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="stylesheets/style.css">
 </head>
@@ -10,15 +10,15 @@
 <body>
 <div class="container-fluid">
   <div class="row header">
-    <h1>Rock Paper Scissors</h1>
+    <h1><strong>Official</strong> Rock Paper Scissors</h1>
   </div>
   <div class="row header">
-    <button class="connect btn btn-success">Find player</button> 
+    <button class="connect btn btn-primary">Find Player</button> 
   </div>
   <div class="row header">
     <div id="messages"></div>
   </div>
-  <div class="row temp">
+  <div class="row action">
     <img src="/images/red_rock.jpg" id="red-rock" class="red-choice"></img>
     <img src="/images/red_paper.jpg" id="red-paper" class="red-choice"></img>
     <img src="/images/red_scissors.jpg" id="red-scissors" class="red-choice"></img>
@@ -26,6 +26,8 @@
     <img src="/images/blue_rock.jpg" id="blue-rock" class="blue-choice"></img>
     <img src="/images/blue_paper.jpg" id="blue-paper" class="blue-choice"></img>
     <img src="/images/blue_scissors.jpg" id="blue-scissors" class="blue-choice"></img>
+    <div class="red-score">0</div>
+    <div class="blue-score">0</div>
   </div>
   <div class="row footer">
     <button class="choice btn btn-danger">Rock</button>
@@ -50,8 +52,42 @@ $('.connect').on('click', function() {
   });
 
 	socket.on('startGame', function(data) {
-    $('#messages').html(data.message);
     game = new RPS.Game({ player: id, socket: socket });
+    
+    var i = 0;
+    var round = 1;
+    var blueScore = 0;
+    var redScore = 0;
+    var messages = ["ROUND ", "ROCK", "PAPER", "SCISSORS", "SHOOT"];
+    var intervalId = setInterval(function(){
+      if (i % messages.length === 0) {
+        $('.footer').css("display", "block"); 
+        $('#messages').html("<h3>" + messages[i] + (round).toString() + "</h3>");
+      }
+      else {
+        $('#messages').html("<h3>" + messages[i] + "</h3>");
+      }
+      if (i % messages.length === 4) {
+        $('.footer').css("display", "none");
+        if ((game.state.blue === "rock" && game.state.red === "scissors") ||
+            (game.state.blue === "paper" && game.state.red === "rock") ||
+            (game.state.blue === "scissors" && game.state.red === "paper")) {
+          ++blueScore;
+          $('.blue-score').text(blueScore.toString());
+        }
+        if ((game.state.red === "rock" && game.state.blue === "scissors") ||
+            (game.state.red === "paper" && game.state.blue === "rock") ||
+            (game.state.red === "scissors" && game.state.blue === "paper")) {
+          ++redScore;
+          $('.red-score').text(redScore.toString());
+        }
+      }
+      ++i;
+      if (i == messages.length) {
+        round++;
+        i = 0
+      }
+    }, 1000);
 	})
 });
 </script>

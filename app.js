@@ -24,7 +24,7 @@ io.sockets.on('connection', function(socket) {
   socket.emit('receive', { id: id });
   
 	if (players.length === 2) { 
-		io.sockets.emit('startGame', { message: 'Have fun!', players: players });
+		io.sockets.emit('startGame', { players: players });
 	}
 
   socket.on('alertChoice', function(data) {

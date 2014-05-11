@@ -34,6 +34,22 @@
   padding-top: 140px;
 }
 
+.red-score {
+  position: absolute;
+  left: 20px;
+  padding-top: 240px;
+  font-size: 40;
+  color: white;
+}
+
+.blue-score {
+  position: absolute;
+  right: 20px;
+  padding-top: 240px;
+  font-size: 40;
+  color: white;
+}
+
 .versus {
   position: absolute;
   margin-left: auto;
@@ -50,6 +66,15 @@
   text-align: center;
 }
 
-.temp {
+.action {
   height: 600px;
+}
+
+#messages {
+  height: 26px;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
