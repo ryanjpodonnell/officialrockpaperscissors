@@ -42,8 +42,9 @@
 <script src="javascripts/game.js"></script>
 <script>
 $('.connect').on('click', function() {
-	var socket = io.connect();
+	var socket = io.connect("http://localhost", {'force new connection': true});
 	var id;
+  var intervalId
 
 	$('#messages').html("Waiting for other player to connect...");
 
@@ -59,7 +60,7 @@ $('.connect').on('click', function() {
     var blueScore = 0;
     var redScore = 0;
     var messages = ["ROUND ", "ROCK", "PAPER", "SCISSORS", "SHOOT"];
-    var intervalId = setInterval(function(){
+    intervalId = setInterval(function(){
       if (i % messages.length === 0) {
         $('.footer').css("display", "block"); 
         $('#messages').html("<h3>" + messages[i] + (round).toString() + "</h3>");
@@ -88,7 +89,14 @@ $('.connect').on('click', function() {
         i = 0
       }
     }, 1000);
-	})
+	});
+  
+	socket.on('endGame', function() {
+    clearInterval(intervalId);
+    $('#messages').text("Opponent has disconnected...");
+    socket.disconnect();
+	});
+  
 });
 </script>
 
