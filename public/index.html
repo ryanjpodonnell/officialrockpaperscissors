@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Rock Paper Scissors</title>
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="stylesheets/style.css">
 </head>
   
@@ -18,11 +18,12 @@
   <div id="red-choice"></div>
   <div id="blue-choice"></div>
 
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
+  <script src="javascripts/preload_images.js"></script>
   <script src="javascripts/game.js"></script>
-
 	<script>
 	$('.connect').on('click', function() {
 		var socket = io.connect();
