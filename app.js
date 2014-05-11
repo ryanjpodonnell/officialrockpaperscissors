@@ -17,7 +17,8 @@ io.sockets.on('connection', function(socket) {
 	var id = players.indexOf(player)
   
   socket.on('disconnect', function() {
-    players.splice(id, 1);
+    // players.splice(id, 1);
+    players.length = 0;
   });
   
   socket.emit('receive', { id: id });
@@ -26,7 +27,7 @@ io.sockets.on('connection', function(socket) {
 		io.sockets.emit('startGame', { message: 'Have fun!', players: players });
 	}
 
-  socket.on('temp', function() {
-    io.sockets.emit('temp');
+  socket.on('alertChoice', function(data) {
+    io.sockets.emit('showChoice', { choice: data.choice, player: data.player });
   });
 });
