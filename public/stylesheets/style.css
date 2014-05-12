@@ -25,19 +25,19 @@
 .red-choice {
   position: absolute;
   left: 0px;
-  padding-top: 140px;
+  padding-top: 40px;
 }
 
 .blue-choice {
   position: absolute;
   right: 0px;
-  padding-top: 140px;
+  padding-top: 40px;
 }
 
 .red-score {
   position: absolute;
   left: 20px;
-  padding-top: 240px;
+  padding-top: 140px;
   font-size: 40;
   color: white;
 }
@@ -45,7 +45,7 @@
 .blue-score {
   position: absolute;
   right: 20px;
-  padding-top: 240px;
+  padding-top: 140px;
   font-size: 40;
   color: white;
 }
@@ -56,6 +56,8 @@
   margin-right: auto;
   left: 0;
   right: 0;
+  height: 300px;
+  width: auto;
 }
 
 .header {
@@ -67,7 +69,7 @@
 }
 
 .action {
-  height: 600px;
+  height: 300px;
 }
 
 #messages {
