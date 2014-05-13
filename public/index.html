@@ -9,8 +9,9 @@
   
 <body>
 <div class="container-fluid">
-  <div class="row header">
+  <div class="row header page-header">
     <h1><strong>Official</strong> Rock Paper Scissors</h1>
+    <p>Be sure to play with a friend! Send them a link for multiplayer</p>
   </div>
   <div class="row header connect-row">
     <button class="connect btn btn-primary">Find Player</button> 
@@ -61,6 +62,15 @@ $('.connect').on('click', function() {
     var round = 1;
     var blueScore = 0;
     var redScore = 0;
+    $('.blue-score').text(blueScore.toString());
+    $('.red-score').text(redScore.toString());
+    $("#red-paper").css("display", "none");
+    $("#red-scissors").css("display", "none");
+    $("#red-rock").css("display", "inline");
+    $("#blue-paper").css("display", "none");
+    $("#blue-scissors").css("display", "none");
+    $("#blue-rock").css("display", "inline");
+    
     var messages = ["ROUND ", "ROCK", "PAPER", "SCISSORS", "SHOOT"];
     intervalId = setInterval(function(){
       if (i % messages.length === 0) {
